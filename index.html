@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Генератор сертификатов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f0f0;
+        }
+        .certificate {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #000;
+            display: none;
+            background-image: url('certificate_background.png'); /* Путь к вашему фоновому изображению */
+            background-size: cover;
+            width: 800px;
+            height: 600px;
+            position: relative;
+            margin: 0 auto;
+        }
+        .certificate h2 {
+            margin-top: 100px;
+            font-size: 40px;
+            color: #333;
+        }
+        .certificate p {
+            font-size: 30px;
+            color: #333;
+            position: absolute;
+            top: 300px; /* Позиционирование текста по вертикали */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <h1>Введите свои данные</h1>
+    <form id="fioForm">
+        <input type="text" id="fio" placeholder="Фамилия Имя Отчество" required>
+        <button type="submit">Получить сертификат</button>
+    </form>
+    <div id="certificate" class="certificate">
+        <h2>Сертификат</h2>
+        <p id="certificateFio"></p>
+    </div>
+    <script>
+        document.getElementById('fioForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fio = document.getElementById('fio').value;
+            document.getElementById('certificateFio').innerText = `Фамилия Имя Отчество: ${fio}`;
+            document.getElementById('certificate').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
